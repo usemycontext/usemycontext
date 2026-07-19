@@ -5,6 +5,10 @@ are working on, plus the files that matter, owned by you at [usemycontext.ai](ht
 and any MCP-capable AI client reads it. Sign in once and every AI you use already knows your context;
 you never re-introduce yourself, and you can see and revoke every connection from one page.
 
+**Try it in 30 seconds - no signup.** Sign in as `demo@usemycontext.ai` with code `424242` (fixed - no
+email access needed). A shared, read-only demo account with a full profile, files, and a shared context.
+Docs: [usemycontext.ai/docs](https://usemycontext.ai/docs)
+
 ## Connect any MCP client
 
 The server is a standard remote MCP server:
@@ -125,6 +129,7 @@ read-only against your Notion and Drive, and disconnecting deletes the copies fr
 | | |
 |---|---|
 | The service | [usemycontext.ai](https://usemycontext.ai) |
+| Docs | [usemycontext.ai/docs](https://usemycontext.ai/docs) |
 | Claude Code plugin | [github.com/usemycontext/claude-code-plugin](https://github.com/usemycontext/claude-code-plugin) |
 | Cursor plugin | [github.com/usemycontext/cursor-plugin](https://github.com/usemycontext/cursor-plugin) |
 | SDK for app builders | [`usemycontext` on npm](https://www.npmjs.com/package/usemycontext) |
