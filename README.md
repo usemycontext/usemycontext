@@ -117,7 +117,7 @@ read-only against your Notion and Drive, and disconnecting deletes the copies fr
 
 ## Trust
 
-- Every read is scoped to a project you chose and logged to your audit trail.
+- Every read is scoped to a project you chose, and access leaves a record in your audit trail.
 - One tool, `suggest_update`, can write: it files a pending suggestion that you review and approve
   in the web app. Nothing the AI does ever edits your profile or your files directly.
 - Revoke any AI in one click, from `/mcp` in your client or the Connect page in the web app.
