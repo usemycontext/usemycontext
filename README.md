@@ -5,9 +5,11 @@ are working on, plus the files that matter, owned by you at [usemycontext.ai](ht
 and any MCP-capable AI client reads it. Sign in once and every AI you use already knows your context;
 you never re-introduce yourself, and you can see and revoke every connection from one page.
 
-**Try it in 30 seconds - no signup.** Sign in as `demo@usemycontext.ai` with code `424242` (fixed - no
-email access needed). A shared, read-only demo account with a full profile, files, and a shared context.
-Docs: [usemycontext.ai/docs](https://usemycontext.ai/docs)
+**Try it in 30 seconds, no signup.** The demo account works two ways: sign in on the web at
+[usemycontext.ai](https://usemycontext.ai) (the "Try the live demo" button), or connect any MCP client
+to `https://mcp.usemycontext.ai/mcp` and use it at the OAuth sign-in. Login: `demo@usemycontext.ai`,
+code `424242` (fixed - no mailbox needed). A shared, read-only account with a full profile, files, and a
+shared context. Docs: [usemycontext.ai/docs](https://usemycontext.ai/docs)
 
 ## Connect any MCP client
 
