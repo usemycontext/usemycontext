@@ -106,8 +106,55 @@ Any client that speaks Streamable HTTP with OAuth can connect. The common JSON s
 Some clients name the fields differently (`serverUrl`, `type: "streamable-http"`); check your
 client's MCP docs for the exact key names.
 
-Once connected, the client gets eight tools - `profile`, `list_files`, `search_files`, `get_file`,
+Once connected, the client gets thirteen tools - `profile`, `list_profiles`, `info`, `account`, `list_files`, `search_files`,
+`get_file`, `search`, `fetch` (thin aliases of `search_files`/`get_file` for ChatGPT deep-research compatibility),
 `ask_docs`, `query_table`, `suggest_update`, `shared_context` - all read-only against your files.
+
+## Session starter for file-driven tools: `npx usemycontext pull`
+
+Not every AI tool speaks MCP. For the ones that read a local file at startup - Claude Code, agent
+frameworks, your own scripts - one command writes your curated context to disk:
+
+```bash
+export UMC_TOKEN=<your token from the Connect page at usemycontext.ai>
+npx -y usemycontext pull                # writes ./UMC-CONTEXT.md
+npx -y usemycontext pull --out me.md    # or any path
+```
+
+The file holds your compiled profile only, never raw facts, files, or audit, wrapped in a short fixed
+preamble telling the reading AI that this is your human-curated ground truth and must not be rewritten
+or appended to, plus a date stamp and a pointer back to your live profile. Re-running overwrites it, so
+it stays fresh, and a failure exits non-zero with one plain-English line rather than leaving a partial
+file. Pulls appear as their own client, `umc-cli`, in your activity feed, separate from Claude or
+ChatGPT.
+
+Wire it into Claude Code as a SessionStart hook, in `.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [{ "type": "command", "command": "npx -y usemycontext pull" }] }
+    ]
+  }
+}
+```
+
+Then one line in your `CLAUDE.md` tells the session to read it:
+
+```
+Read UMC-CONTEXT.md at session start: it is my curated personal context.
+```
+
+**Handling the token.** It is your session token, and it is long-lived (a year), so a leak is not
+self-limiting - treat it like a password. The CLI deliberately never accepts it as a command-line flag,
+because flags land in your shell history, and it never writes the token anywhere itself. Put it in
+`UMC_TOKEN` in your shell profile, or in a `token=<value>` line in `~/.usemycontext` that you
+`chmod 600`. If it does leak, open the Connect page at [usemycontext.ai](https://usemycontext.ai) and use
+"Disconnect everything": revoking is enforced on the server, so every token dies immediately, everywhere.
+
+More recipes, including pointing an agent framework's bootstrap file at the pulled file, are in the
+[`usemycontext` package README](https://www.npmjs.com/package/usemycontext).
 
 ## Your notes become context
 
