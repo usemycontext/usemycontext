@@ -16,6 +16,11 @@ MCP. **You approve every update:** an AI can only suggest a change, and nothing 
 - **[OpenCode](https://github.com/anomalyco/opencode):** a `remote` server in `opencode.json` ([plugin](https://github.com/usemycontext/opencode-plugin))
 - **[Gemini CLI](https://github.com/google-gemini/gemini-cli):** `gemini extensions install https://github.com/usemycontext/gemini-cli-extension`
 
+For tools that read a file at startup instead of speaking MCP, `npx usemycontext pull` writes your
+curated profile to a local `UMC-CONTEXT.md` ([how it works](https://usemycontext.ai/docs/cli-pull)).
+It uses a long-lived token from the Connect page: treat it like a password, and "Disconnect
+everything" on that page revokes it on the server.
+
 Any other MCP client: add `https://mcp.usemycontext.ai/mcp` (Streamable HTTP). Sign-in is OAuth in
 the browser, no API key to copy. Every client step is in the [docs](https://usemycontext.ai/docs/connect).
 
